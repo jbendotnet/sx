@@ -163,6 +163,35 @@ func TestOpenCodeBootstrapMCP(t *testing.T) {
 	}
 }
 
+func TestOpenCodeNonInteractiveInitInstallsDefaultMCP(t *testing.T) {
+	env := NewTestEnv(t)
+	t.Setenv("PATH", "")
+
+	opencodeDir := filepath.Join(env.HomeDir, ".config", "opencode")
+	if err := os.MkdirAll(opencodeDir, 0755); err != nil {
+		t.Fatalf("Failed to create OpenCode config dir: %v", err)
+	}
+
+	cmd := NewInitCommand()
+	cmd.SetArgs([]string{"--type=git", "--repo-url=git@example.com:team/sx-vault.git"})
+	if err := cmd.Execute(); err != nil {
+		t.Fatalf("init failed: %v", err)
+	}
+
+	config := readOpenCodeConfigForTest(t, filepath.Join(opencodeDir, "opencode.json"))
+	mcp, ok := config["mcp"].(map[string]any)
+	if !ok {
+		t.Fatalf("opencode.json missing mcp map: %#v", config)
+	}
+	server, ok := mcp["sx"].(map[string]any)
+	if !ok {
+		t.Fatalf("sx MCP not installed during non-interactive init: %#v", mcp)
+	}
+	if server["type"] != "local" {
+		t.Fatalf("sx MCP type = %#v, want local", server["type"])
+	}
+}
+
 func TestOpenCodeClientInfo(t *testing.T) {
 	env := NewTestEnv(t)
 	setupTestConfig(t, env.HomeDir, nil, nil)

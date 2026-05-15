@@ -23,14 +23,15 @@ import (
 )
 
 const (
-	configDir     = ".config/opencode"
-	projectDir    = ".opencode"
-	configFile    = "opencode.json"
-	dirSkills     = "skills"
-	dirCommands   = "commands"
-	dirAgents     = "agents"
-	dirRules      = "rules"
-	dirMCPServers = "mcp-servers"
+	bootstrapMCPKey = "opencode_sx_mcp"
+	configDir       = ".config/opencode"
+	projectDir      = ".opencode"
+	configFile      = "opencode.json"
+	dirSkills       = "skills"
+	dirCommands     = "commands"
+	dirAgents       = "agents"
+	dirRules        = "rules"
+	dirMCPServers   = "mcp-servers"
 )
 
 var skillOps = dirasset.NewOperations(dirSkills, &asset.TypeSkill)
@@ -446,7 +447,12 @@ func (c *Client) EnsureAssetSupport(ctx context.Context, scope *clients.InstallS
 
 // GetBootstrapOptions returns bootstrap options for OpenCode.
 func (c *Client) GetBootstrapOptions(ctx context.Context) []bootstrap.Option {
-	return []bootstrap.Option{bootstrap.SleuthAIQueryMCP()}
+	opt := bootstrap.SleuthAIQueryMCP()
+	opt.Key = bootstrapMCPKey
+	opt.Description = "OpenCode sx MCP server - Enables sx tools in OpenCode"
+	opt.Prompt = "Install sx MCP server for OpenCode?"
+	opt.Default = true
+	return []bootstrap.Option{opt}
 }
 
 // GetBootstrapPath returns the path to OpenCode's config file.
