@@ -2,7 +2,7 @@
 
 sx supports two kinds of AI clients:
 
-1. **File-based clients** (Claude Code, Cursor, Codex, Copilot, Gemini, Kiro, Cline) — sx writes asset files into well-known directories the client reads on startup. This is the default `sx install` flow.
+1. **File-based clients** (Claude Code, Cursor, Codex, Copilot, Gemini, Kiro, Cline, OpenCode) — sx writes asset files into well-known directories the client reads on startup. This is the default `sx install` flow.
 2. **Web clients** (claude.ai, chatgpt.com) — sx exposes the vault as an MCP endpoint through the skills.new cloud relay. See [cloud-relay.md](cloud-relay.md).
 
 The two paths are independent. A vault can serve both; the same assets are reachable from a CLI tool reading `.claude/skills/` and from claude.ai talking to the relay.
@@ -24,6 +24,7 @@ Many AI tools ship in two forms: a **desktop IDE** and a **CLI**. These often ha
 | Gemini         | CLI/IDE | Full support for CLI/VS Code; rules and MCP only (JetBrains); MCP-remote only (Android Studio) |
 | GitHub Copilot | IDE ext | Full support                                                                                   |
 | Kiro           | CLI+IDE | Full support. See [Kiro-specific docs](kiro.md) for hook setup.                                |
+| OpenCode       | CLI     | Skills, rules, commands, agents, MCP servers                                                   |
 
 ## Web clients (cloud relay)
 

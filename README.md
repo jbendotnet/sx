@@ -33,7 +33,7 @@ Your best developers have figured out how to make AI assistants incredibly produ
 - **Instant onboarding** - New devs inherit the team's AI playbook on day one
 - **Central updates** - Change once in your vault, everyone gets the update
 - **Scoped installation** - Right assets for each org, team, bot, repo or person, no context bloat
-- **Works with any AI client** - Claude Code, Cursor, GitHub Copilot, Gemini, Kiro, and more, plus claude.ai and chatgpt.com via the cloud relay
+- **Works with any AI client** - Claude Code, Cursor, GitHub Copilot, Gemini, Kiro, OpenCode, and more, plus claude.ai and chatgpt.com via the cloud relay
 
 ## Quickstart
 
@@ -219,6 +219,7 @@ everyone gets the same tools automatically.
 | Gemini (Android Studio) | ✅ Supported   | Rules, MCP-remote only (HTTP, no stdio)                   |
 | Kiro                    | ✅ Supported   | Skills, rules, commands, MCP servers                      |
 | Openclaw                | ✅ Supported   | Skills, rules, commands                      |
+| OpenCode                | ✅ Supported   | Skills, rules, commands, agents, MCP servers              |
 | claude.ai (web)         | ✅ Supported   | Via the [skills.new cloud relay](docs/cloud-relay.md)     |
 | chatgpt.com (web)       | ✅ Supported   | Via the [skills.new cloud relay](docs/cloud-relay.md)     |
 
@@ -233,6 +234,7 @@ everyone gets the same tools automatically.
 - ✅ Codex support
 - ✅ Kiro support
 - ✅ Openclaw support
+- ✅ OpenCode support
 - ✅ claude.ai and chatgpt.com support via the skills.new cloud relay
 - ✅ Org, Team, Bot, Repository & Personal installation targets for all vault types
 - ✅ Skill discovery - Use Skills.new to discover relevant skills from your code and architecture
