@@ -49,7 +49,7 @@ type Asset struct {
 	// receive it; other enabled clients are silently skipped.
 	//
 	// Values must match registered client IDs (claude-code, cursor, gemini,
-	// cline, codex, github-copilot, kiro, openclaw). Validation runs at
+	// cline, codex, github-copilot, kiro, openclaw, opencode). Validation runs at
 	// `sx add` / publish time so unknown IDs fail loudly.
 	//
 	// This is opt-in; existing assets without a `clients` field are

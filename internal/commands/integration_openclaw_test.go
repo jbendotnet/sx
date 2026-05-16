@@ -16,6 +16,7 @@ import (
 // TestOpenClawClientDetection tests that OpenClaw is detected when ~/.openclaw exists
 func TestOpenClawClientDetection(t *testing.T) {
 	env := NewTestEnv(t)
+	t.Setenv("PATH", "")
 
 	client, err := clients.Global().Get(clients.ClientIDOpenClaw)
 	if err != nil {
